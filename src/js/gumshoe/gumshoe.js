@@ -31,7 +31,10 @@
 		reflow: false,
 
 		// Event support
-		events: true
+		events: true,
+
+		// End of page
+		useLast: true
 
 	};
 
@@ -184,7 +187,9 @@
 	 */
 	var getActive = function (contents, settings) {
 		var last = contents[contents.length-1];
-		if (useLastItem(last, settings)) return last;
+		if (useLastItem(last, settings) && useLast !== false) {
+			return last;
+		}
 		for (var i = contents.length - 1; i >= 0; i--) {
 			if (isInView(contents[i].content, settings)) return contents[i];
 		}
