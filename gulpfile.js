@@ -9,7 +9,6 @@ var settings = {
 	polyfills: true,
 	styles: true,
 	svgs: true,
-	copy: true,
 	reload: true
 };
 
@@ -33,10 +32,6 @@ var paths = {
 	svgs: {
 		input: 'src/svg/*.svg',
 		output: 'dist/svg/'
-	},
-	copy: {
-		input: 'src/copy/**/*',
-		output: './'
 	},
 	reload: './'
 };
@@ -242,21 +237,6 @@ var buildSVGs = function (done) {
 
 };
 
-// Copy static files into output folder
-var copyFiles = function (done) {
-
-	// Make sure this feature is activated before running
-	if (!settings.copy) return done();
-
-	// Copy static files
-	src(paths.copy.input)
-		.pipe(dest(paths.copy.output));
-
-	// Signal completion
-	done();
-
-};
-
 // Watch for changes to the src directory
 var startServer = function (done) {
 
@@ -301,8 +281,7 @@ exports.default = series(
 		buildScripts,
 		lintScripts,
 		buildStyles,
-		buildSVGs,
-		copyFiles
+		buildSVGs
 	)
 );
 
