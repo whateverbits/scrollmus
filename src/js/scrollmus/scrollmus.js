@@ -6,7 +6,7 @@
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.Gumshoe = factory(root);
+		root.Scrollmus = factory(root);
 	}
 })(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, function (window) {
 
@@ -239,7 +239,7 @@
 		deactivateNested(li, settings);
 
 		// Emit a custom event
-		emitEvent('gumshoeDeactivate', li, {
+		emitEvent('scrollmusDeactivate', li, {
 			link: items.nav,
 			content: items.content,
 			settings: settings
@@ -292,7 +292,7 @@
 		activateNested(li, settings);
 
 		// Emit a custom event
-		emitEvent('gumshoeActivate', li, {
+		emitEvent('scrollmusActivate', li, {
 			link: items.nav,
 			content: items.content,
 			settings: settings

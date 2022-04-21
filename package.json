@@ -1,8 +1,8 @@
 {
-	"name": "gumshoejs",
+	"name": "scrollmus",
 	"version": "5.1.2",
 	"description": "A simple, framework-agnostic scrollspy script.",
-	"main": "./dist/gumshoe.min.js",
+	"main": "./dist/scrollmus.min.js",
 	"author": {
 		"name": "Chris Ferdinandi",
 		"url": "http://gomakethings.com"
@@ -10,7 +10,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "http://github.com/cferdinandi/gumshoe"
+		"url": "https://gitlab.com/whateverbits/scrollmus"
 	},
 	"devDependencies": {
 		"gulp": "4.0.0",
