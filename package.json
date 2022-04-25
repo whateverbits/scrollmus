@@ -3,6 +3,16 @@
 	"version": "0.0.0",
 	"description": "A simple, framework-agnostic scrollspy script.",
 	"main": "./dist/scrollmus.min.js",
+	"files": [
+		"dist",
+		"LICENSE",
+		"README.md"
+	],
+	"keywords": [
+		"scrollmus",
+		"scrollspy"
+	],
+	"homepage": "https://gitlab.com/whateverbits/scrollmus",
 	"repository": {
 		"type": "git",
 		"url": "https://gitlab.com/whateverbits/scrollmus"
