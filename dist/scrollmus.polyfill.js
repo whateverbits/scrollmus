@@ -1,11 +1,4 @@
-/*!
- * gumshoejs v5.1.2
- * A simple, framework-agnostic scrollspy script.
- * (c) 2019 Chris Ferdinandi
- * MIT License
- * http://github.com/cferdinandi/gumshoe
- */
-
+/*! Scrollmus 1.0.0 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
 /**
  * Element.closest() polyfill
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
@@ -24,8 +17,7 @@ if (!Element.prototype.closest) {
 		} while (ancestor !== null);
 		return null;
 	};
-}
-/**
+}/**
  * CustomEvent() polyfill
  * https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
  */
@@ -44,18 +36,17 @@ if (!Element.prototype.closest) {
 
 	window.CustomEvent = CustomEvent;
 	
-})();
-(function (root, factory) {
+})();(function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
-		define([], (function () {
+		define([], function () {
 			return factory(root);
-		}));
+		});
 	} else if ( typeof exports === 'object' ) {
 		module.exports = factory(root);
 	} else {
-		root.Gumshoe = factory(root);
+		root.Scrollmus = factory(root);
 	}
-})(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, (function (window) {
+})(typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this, function (window) {
 
 	'use strict';
 
@@ -78,7 +69,10 @@ if (!Element.prototype.closest) {
 		reflow: false,
 
 		// Event support
-		events: true
+		events: true,
+
+		// End of page
+		useLast: true
 
 	};
 
@@ -94,12 +88,12 @@ if (!Element.prototype.closest) {
 	 */
 	var extend = function () {
 		var merged = {};
-		Array.prototype.forEach.call(arguments, (function (obj) {
+		Array.prototype.forEach.call(arguments, function (obj) {
 			for (var key in obj) {
 				if (!obj.hasOwnProperty(key)) return;
 				merged[key] = obj[key];
 			}
-		}));
+		});
 		return merged;
 	};
 
@@ -148,12 +142,12 @@ if (!Element.prototype.closest) {
 	 */
 	var sortContents = function (contents) {
 		if(contents) {
-			contents.sort((function (item1, item2) {
+			contents.sort(function (item1, item2) {
 				var offset1 = getOffsetTop(item1.content);
 				var offset2 = getOffsetTop(item2.content);
 				if (offset1 < offset2) return -1;
 				return 1;
-			}));
+			});
 		}
 	};
 
@@ -231,7 +225,9 @@ if (!Element.prototype.closest) {
 	 */
 	var getActive = function (contents, settings) {
 		var last = contents[contents.length-1];
-		if (useLastItem(last, settings)) return last;
+		if (useLastItem(last, settings) && useLast !== false) {
+			return last;
+		}
 		for (var i = contents.length - 1; i >= 0; i--) {
 			if (isInView(contents[i].content, settings)) return contents[i];
 		}
@@ -281,7 +277,7 @@ if (!Element.prototype.closest) {
 		deactivateNested(li, settings);
 
 		// Emit a custom event
-		emitEvent('gumshoeDeactivate', li, {
+		emitEvent('scrollmusDeactivate', li, {
 			link: items.nav,
 			content: items.content,
 			settings: settings
@@ -334,7 +330,7 @@ if (!Element.prototype.closest) {
 		activateNested(li, settings);
 
 		// Emit a custom event
-		emitEvent('gumshoeActivate', li, {
+		emitEvent('scrollmusActivate', li, {
 			link: items.nav,
 			content: items.content,
 			settings: settings
@@ -373,7 +369,7 @@ if (!Element.prototype.closest) {
 			contents = [];
 
 			// Loop through each item, get it's matching content, and push to the array
-			Array.prototype.forEach.call(navItems, (function (item) {
+			Array.prototype.forEach.call(navItems, function (item) {
 
 				// Get the content for the nav item
 				var content = document.getElementById(decodeURIComponent(item.hash.substr(1)));
@@ -385,7 +381,7 @@ if (!Element.prototype.closest) {
 					content: content
 				});
 
-			}));
+			});
 
 			// Sort contents by the order they appear in the DOM
 			sortContents(contents);
@@ -449,10 +445,10 @@ if (!Element.prototype.closest) {
 			}
 
 			// Setup debounce callback
-			timeout = window.requestAnimationFrame((function () {
+			timeout = window.requestAnimationFrame(function () {
 				sortContents(contents);
 				publicAPIs.detect();
-			}));
+			});
 
 		};
 
@@ -520,4 +516,4 @@ if (!Element.prototype.closest) {
 
 	return Constructor;
 
-}));
+});
