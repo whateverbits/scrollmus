@@ -1,34 +1,30 @@
 {
 	"name": "scrollmus",
-	"version": "5.1.2",
+	"version": "0.0.0",
 	"description": "A simple, framework-agnostic scrollspy script.",
 	"main": "./dist/scrollmus.min.js",
-	"author": {
-		"name": "Chris Ferdinandi",
-		"url": "http://gomakethings.com"
-	},
-	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://gitlab.com/whateverbits/scrollmus"
 	},
+	"author": "WhateverBits",
+	"contributors": [
+		{ "name": "Go Make Things, LLC",
+			"url": "https://gomakethings.com/"
+		},
+		{ "name": "WhateverBits",
+			"url": "https://whateverbits.com/"
+		}
+	],
+	"license": "MIT",
+	"scripts": {
+		"build:main": "bin/banner.sh | cat - src/scrollmus.js > dist/scrollmus.js",
+		"build:poly": "bin/banner.sh | cat - src/_closest.polyfill.js src/_customEvent.polyfill.js src/scrollmus.js > dist/scrollmus.polyfill.js",
+		"minify:main": "uglifyjs dist/scrollmus.js --compress --mangle --warn --comments '/^!/' --output dist/scrollmus.min.js",
+		"minify:poly": "uglifyjs dist/scrollmus.polyfill.js --compress --mangle --warn --comments '/^!/' --output dist/scrollmus.polyfill.min.js",
+		"prepare": "npm run build:main && npm run build:poly && npm run minify:main && npm run minify:poly"
+	},
 	"devDependencies": {
-		"gulp": "4.0.0",
-		"del": "3.0.0",
-		"lazypipe": "1.0.1",
-		"gulp-flatmap": "1.0.2",
-		"gulp-header": "2.0.5",
-		"gulp-rename": "1.4.0",
-		"jshint": "2.9.6",
-		"gulp-jshint": "2.1.0",
-		"jshint-stylish": "2.2.1",
-		"gulp-concat": "2.6.1",
-		"gulp-terser": "1.1.7",
-		"gulp-optimize-js": "1.1.0",
-		"gulp-sass": "4.0.2",
-		"gulp-cssnano": "2.1.3",
-		"gulp-autoprefixer": "6.0.0",
-		"gulp-svgmin": "2.1.0",
-		"browser-sync": "2.26.3"
+		"uglify-js": "^3.15.4"
 	}
 }
