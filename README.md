@@ -1,30 +1,21 @@
 # Scrollmus
-A simple vanilla JS scrollspy script. Scrollmus works great with [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll).
+A simple vanilla JS scrollspy script.
 
-**[View the Demo on CodePen &rarr;](https://codepen.io/cferdinandi/pen/aMvxKr)**
+[Getting Started](#getting-started) | [Nested Navigation](#nested-navigation) | [Reflows](#catching-reflows) | [Fixed Headers](#accounting-for-fixed-headers) | [API](#api) | [Browser Compatibility](#browser-compatibility) | [License](#license)
 
-[Getting Started](#getting-started) | [Nested Navigation](#nested-navigation) | [Reflows](#catching-reflows) | [Fixed Headers](#accounting-for-fixed-headers) | [API](#api) | [What's new?](#whats-new) | [Browser Compatibility](#browser-compatibility) | [License](#license)
-
-<hr>
-
-### Want to learn how to write your own vanilla JS plugins? Check out my [Vanilla JS Pocket Guides](https://vanillajsguides.com/) or join the [Vanilla JS Academy](https://vanillajsacademy.com) and level-up as a web developer. 🚀
-
-<hr>
-
+---
 
 ## Getting Started
-
 Compiled and production-ready code can be found in the `dist` directory. The `src` directory contains development code.
 
 ### 1. Include Scrollmus on your site.
-
 There are two versions of Scrollmus: the standalone version, and one that comes preloaded with polyfills for `closest()` and `CustomEvent()`, which are only supported in newer browsers.
 
 If you're including your own polyfills or don't want to enable this feature for older browsers, use the standalone version. Otherwise, use the version with polyfills.
 
 **Direct Download**
 
-You can [download the files directly from GitHub](https://github.com/cferdinandi/scrollmus/archive/master.zip).
+You can [download the files directly from GitLab](https://gitlab.com/whateverbits/scrollmus/-/archive/main/scrollmus-main.tar.gz).
 
 ```html
 <script src="path/to/scrollmus.polyfills.min.js"></script>
@@ -32,21 +23,21 @@ You can [download the files directly from GitHub](https://github.com/cferdinandi
 
 **CDN**
 
-You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/scrollmus/dist/). I recommend linking to a specific version number or version range to prevent major updates from breaking your site. Scrollmus uses semantic versioning.
+You can also use the [jsDelivr CDN](https://www.jsdelivr.com/package/npm/scrollmus). I recommend linking to a specific version number or version range to prevent major updates from breaking your site. Scrollmus uses semantic versioning.
 
 ```html
 <!-- Always get the latest version -->
 <!-- Not recommended for production sites! -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/scrollmus/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus/dist/scrollmus.polyfills.min.js"></script>
 
 <!-- Get minor updates and patch fixes within a major version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/scrollmus@4/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1/dist/scrollmus.polyfills.min.js"></script>
 
 <!-- Get patch fixes within a minor version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/scrollmus@4.0/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0/dist/scrollmus.polyfills.min.js"></script>
 
 <!-- Get a specific version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/scrollmus@4.0.0/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0.0/dist/scrollmus.polyfills.min.js"></script>
 ```
 
 **NPM**
@@ -54,11 +45,10 @@ You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/scro
 You can also use NPM (or your favorite package manager).
 
 ```bash
-npm install scrollmusjs
+npm install scrollmus
 ```
 
 ### 2. Add the markup to your HTML.
-
 The only thing Scrollmus needs to work is a list of anchor links. They can be ordered or unordered, inline or unstyled, or even nested.
 
 ```html
@@ -71,7 +61,6 @@ The only thing Scrollmus needs to work is a list of anchor links. They can be or
 ```
 
 ### 3. Initialize Scrollmus.
-
 In the footer of your page, after the content, initialize Scrollmus by passing in a selector for the navigation links that should be detected as the user scrolls.
 
 ```html
@@ -81,7 +70,6 @@ In the footer of your page, after the content, initialize Scrollmus by passing i
 ```
 
 ### 4. Add styling.
-
 Scrollmus adds the `.active` class to the list item (`<li></li>`) and content for the active link, but does not include any styling.
 
 Add styles to your CSS as desired. And that's it, you're done. Nice work!
@@ -92,14 +80,11 @@ Add styles to your CSS as desired. And that's it, you're done. Nice work!
 }
 ```
 
-**[View a Demo on CodePen &rarr;](https://codepen.io/cferdinandi/pen/aMvxKr)**
-
 *__Note:__ you can customize the class names with [user options](#options-and-settings).*
 
 
 
 ## Nested navigation
-
 If you have a nested navigation menu with multiple levels, Scrollmus can also apply an `.active` class to the parent list items of the currently active link.
 
 ```html
@@ -127,11 +112,7 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 });
 ```
 
-**[Try nested navigation on CodePen &rarr;](https://codepen.io/cferdinandi/pen/JzYVxj)**
-
-
 ## Catching reflows
-
 If the content that's linked to by your navigation has different layouts at different viewports, Scrollmus will need to detect these changes and update some calculations behind-the-scenes.
 
 Set `reflow` to `true` to enable this (it's off by default).
@@ -144,7 +125,6 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 
 
 ## Accounting for fixed headers
-
 If you have a fixed header on your page, you may want to offset when a piece of content is considered "active."
 
 The `offset` user setting accepts either a number, or a function that returns a number. If you need to dynamically calculate dimensions, a function is the preferred method.
@@ -163,16 +143,10 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 });
 ```
 
-**[Try using an offset on CodePen &rarr;](https://codepen.io/cferdinandi/pen/eXpLqo)**
-
-
-
 ## API
-
 Scrollmus includes smart defaults and works right out of the box. But if you want to customize things, it also has a robust API that provides multiple ways for you to adjust the default options and settings.
 
 ### Options and Settings
-
 You can pass options into Scrollmus when instantiating.
 
 ```javascript
@@ -199,7 +173,6 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 ```
 
 ### Custom Events
-
 Scrollmus emits two custom events:
 
 - `scrollmusActivate` is emitted when a link is activated.
@@ -224,7 +197,6 @@ document.addEventListener('scrollmusActivate', function (event) {
 ```
 
 ### Methods
-
 Scrollmus also exposes several public methods.
 
 #### setup()
@@ -257,37 +229,10 @@ var spy = new Scrollmus('#my-awesome-nav a');
 spy.destroy();
 ```
 
-
-
-
-## What's new?
-
-Scrollmus 4 is a ground-up rewrite.
-
-### New Features
-
-- Multiple instantiations can be run with different settings for each.
-- An active class is now added to the content as well.
-- Nested navigation is now supported.
-- Offsets can be dynamically calculated instead of set just once at initialization.
-- Special and non-Roman characters can now be used in anchor links and IDs.
-- Custom events provide a more flexible way to react to DOM changes.
-
-### Breaking Changes
-
-- Scrollmus must now be instantiated as a new object (`new Scrollmus()`) instead of being initialized `scrollmus.init()`.
-- Callback methods have been removed in favor of events.
-- Automatic header offsetting has been removed.
-- The public `init()` method has been deprecated.
-
-
-
 ## Browser Compatibility
-
-Scrollmus works in all modern browsers, and IE 9 and above.
+Scrollmus works in all modern browsers. Support back to IE 9 is available via polyfills.
 
 ### Polyfills
-
 Support back to IE9 requires polyfills for `closest()` and `CustomEvent()`. Without them, support starts with Edge.
 
 Use the included polyfills version of Scrollmus, or include your own.
@@ -295,5 +240,6 @@ Use the included polyfills version of Scrollmus, or include your own.
 
 
 ## License
+Scrollmus is distributed on GitLab under the MIT License.
 
-The code is available under the [MIT License](LICENSE.md).
+[LICENSE](https://gitlab.com/whateverbits/scrollmus/-/blob/main/LICENSE)
