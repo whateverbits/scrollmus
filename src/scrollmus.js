@@ -175,7 +175,7 @@
 	 * @return {Boolean}         If true, use the last item
 	 */
 	var useLastItem = function (item, settings) {
-		if (isAtBottom() && isInView(item.content, settings, true)) return true;
+		if (isAtBottom() && isInView(item.content, settings, true) && settings.useLast === true) return true;
 		return false;
 	};
 
@@ -187,9 +187,7 @@
 	 */
 	var getActive = function (contents, settings) {
 		var last = contents[contents.length-1];
-		if (useLastItem(last, settings) && useLast !== false) {
-			return last;
-		}
+		if (useLastItem(last, settings)) return last;
 		for (var i = contents.length - 1; i >= 0; i--) {
 			if (isInView(contents[i].content, settings)) return contents[i];
 		}
