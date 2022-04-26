@@ -1,10 +1,6 @@
 # Scrollmus
 A simple vanilla JS scrollspy script.
 
-[Getting Started](#getting-started) | [Nested Navigation](#nested-navigation) | [Reflows](#catching-reflows) | [Fixed Headers](#accounting-for-fixed-headers) | [API](#api) | [Browser Compatibility](#browser-compatibility) | [License](#license)
-
----
-
 ## Getting Started
 Compiled and production-ready code can be found in the `dist` directory. The `src` directory contains development code.
 
@@ -18,7 +14,7 @@ If you're including your own polyfills or don't want to enable this feature for 
 You can [download the files directly from GitLab](https://gitlab.com/whateverbits/scrollmus/-/archive/main/scrollmus-main.tar.gz).
 
 ```html
-<script src="path/to/scrollmus.polyfills.min.js"></script>
+<script src="path/to/scrollmus.polyfill.min.js"></script>
 ```
 
 **CDN**
@@ -28,16 +24,16 @@ You can also use the [jsDelivr CDN](https://www.jsdelivr.com/package/npm/scrollm
 ```html
 <!-- Always get the latest version -->
 <!-- Not recommended for production sites! -->
-<script src="https://www.jsdelivr.com/package/npm/scrollmus/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus/dist/scrollmus.polyfill.min.js"></script>
 
 <!-- Get minor updates and patch fixes within a major version -->
-<script src="https://www.jsdelivr.com/package/npm/scrollmus@1/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1/dist/scrollmus.polyfill.min.js"></script>
 
 <!-- Get patch fixes within a minor version -->
-<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0/dist/scrollmus.polyfill.min.js"></script>
 
 <!-- Get a specific version -->
-<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0.0/dist/scrollmus.polyfills.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0.0/dist/scrollmus.polyfill.min.js"></script>
 ```
 
 **NPM**
@@ -82,8 +78,6 @@ Add styles to your CSS as desired. And that's it, you're done. Nice work!
 
 *__Note:__ you can customize the class names with [user options](#options-and-settings).*
 
-
-
 ## Nested navigation
 If you have a nested navigation menu with multiple levels, Scrollmus can also apply an `.active` class to the parent list items of the currently active link.
 
@@ -122,7 +116,6 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 	reflow: true
 });
 ```
-
 
 ## Accounting for fixed headers
 If you have a fixed header on your page, you may want to offset when a piece of content is considered "active."
@@ -167,8 +160,8 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 	// Event support
 	events: true, // if true, emit custom events
 
-	// Bottom of page
-	useLast: true, // if true, the last page item will be set as 'active' when scrolled to bottom
+	// End of page
+	useLast: true // if true, the last page item will be set as 'active' when scrolled to bottom
 });
 ```
 
@@ -229,6 +222,15 @@ var spy = new Scrollmus('#my-awesome-nav a');
 spy.destroy();
 ```
 
+### Use Last Item
+By default, when the user scrolls to the bottom of the page the last item will be marked active. To prevent this behavior, set `useLast` to false when you call Scrollmus. When `useLast` is false, the item at the top of the page will continue to be marked active.
+
+```javascript
+var spy = new Scrollmus('#my-awesome-nav a', {
+	useLast: false
+});
+```
+
 ## Browser Compatibility
 Scrollmus works in all modern browsers. Support back to IE 9 is available via polyfills.
 
@@ -236,8 +238,6 @@ Scrollmus works in all modern browsers. Support back to IE 9 is available via po
 Support back to IE9 requires polyfills for `closest()` and `CustomEvent()`. Without them, support starts with Edge.
 
 Use the included polyfills version of Scrollmus, or include your own.
-
-
 
 ## License
 Scrollmus is distributed on GitLab under the MIT License.
