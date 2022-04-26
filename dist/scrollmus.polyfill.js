@@ -1,4 +1,4 @@
-/*! Scrollmus 1.0.0 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
+/*! Scrollmus 1.0.1 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
 /**
  * Element.closest() polyfill
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
@@ -213,7 +213,7 @@ if (!Element.prototype.closest) {
 	 * @return {Boolean}         If true, use the last item
 	 */
 	var useLastItem = function (item, settings) {
-		if (isAtBottom() && isInView(item.content, settings, true)) return true;
+		if (isAtBottom() && isInView(item.content, settings, true) && settings.useLast === true) return true;
 		return false;
 	};
 
@@ -225,9 +225,7 @@ if (!Element.prototype.closest) {
 	 */
 	var getActive = function (contents, settings) {
 		var last = contents[contents.length-1];
-		if (useLastItem(last, settings) && useLast !== false) {
-			return last;
-		}
+		if (useLastItem(last, settings)) return last;
 		for (var i = contents.length - 1; i >= 0; i--) {
 			if (isInView(contents[i].content, settings)) return contents[i];
 		}
