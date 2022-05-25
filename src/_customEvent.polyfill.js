@@ -1,6 +1,6 @@
 /**
  * CustomEvent() polyfill
- * https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
+ * https://developer.mozilla.org/docs/Web/API/CustomEvent/CustomEvent#Polyfill
  */
 (function () {
 

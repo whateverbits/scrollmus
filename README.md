@@ -232,12 +232,21 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 ```
 
 ## Browser Compatibility
-Scrollmus works in all modern browsers. Support back to IE 9 is available via polyfills.
+Scrollmus works in all modern browsers.
+
++ Firefox: 35
++ Chrome: 41
++ Edge: 15
++ Safari: 9
 
 ### Polyfills
-Support back to IE9 requires polyfills for `closest()` and `CustomEvent()`. Without them, support starts with Edge.
+Older browsers require polyfills for `closest()` and `CustomEvent()`. Use the included `polyfill` version of Scrollmus for increased browser support.
 
-Use the included polyfills version of Scrollmus, or include your own.
++ Firefox: 23
++ Chrome: 24
++ Edge: 12
++ Safari: 7
++ IE: 10
 
 ## License
 Scrollmus is distributed on GitLab under the MIT License.
