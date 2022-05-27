@@ -1,7 +1,7 @@
 {
 	"name": "scrollmus",
-	"version": "1.0.1",
-	"description": "A simple, framework-agnostic scrollspy script.",
+	"version": "1.0.2",
+	"description": "A simple, framework-agnostic, scrollspy script.",
 	"main": "./dist/scrollmus.min.js",
 	"files": [
 		"dist",

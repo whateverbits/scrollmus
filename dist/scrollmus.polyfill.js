@@ -1,7 +1,7 @@
-/*! Scrollmus 1.0.1 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
+/*! Scrollmus 1.0.2 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
 /**
  * Element.closest() polyfill
- * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest#Polyfill
+ * https://developer.mozilla.org/docs/Web/API/Element/closest#Polyfill
  */
 if (!Element.prototype.closest) {
 	if (!Element.prototype.matches) {
@@ -17,9 +17,10 @@ if (!Element.prototype.closest) {
 		} while (ancestor !== null);
 		return null;
 	};
-}/**
+}
+/**
  * CustomEvent() polyfill
- * https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill
+ * https://developer.mozilla.org/docs/Web/API/CustomEvent/CustomEvent#Polyfill
  */
 (function () {
 
@@ -36,7 +37,8 @@ if (!Element.prototype.closest) {
 
 	window.CustomEvent = CustomEvent;
 	
-})();(function (root, factory) {
+})();
+(function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		define([], function () {
 			return factory(root);
@@ -202,7 +204,7 @@ if (!Element.prototype.closest) {
 	 * @return {Boolean} If true, page is at the bottom of the viewport
 	 */
 	var isAtBottom = function () {
-		if (window.innerHeight + window.pageYOffset >= getDocumentHeight()) return true;
+		if (window.innerHeight + Math.round(window.pageYOffset) >= getDocumentHeight()) return true;
 		return false;
 	};
 
@@ -213,7 +215,7 @@ if (!Element.prototype.closest) {
 	 * @return {Boolean}         If true, use the last item
 	 */
 	var useLastItem = function (item, settings) {
-		if (isAtBottom() && isInView(item.content, settings, true) && settings.useLast === true) return true;
+		if (item && settings.useLast && isAtBottom() && isInView(item.content, settings, true)) return true;
 		return false;
 	};
 

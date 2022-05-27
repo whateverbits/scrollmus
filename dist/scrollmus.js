@@ -1,4 +1,4 @@
-/*! Scrollmus 1.0.1 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
+/*! Scrollmus 1.0.2 | (c) 2022 WhateverBits (c) 2014-2019 Go Make Things, LLC | MIT License | https://gitlab.com/whateverbits/scrollmus */
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		define([], function () {
@@ -165,7 +165,7 @@
 	 * @return {Boolean} If true, page is at the bottom of the viewport
 	 */
 	var isAtBottom = function () {
-		if (window.innerHeight + window.pageYOffset >= getDocumentHeight()) return true;
+		if (window.innerHeight + Math.round(window.pageYOffset) >= getDocumentHeight()) return true;
 		return false;
 	};
 
@@ -176,7 +176,7 @@
 	 * @return {Boolean}         If true, use the last item
 	 */
 	var useLastItem = function (item, settings) {
-		if (isAtBottom() && isInView(item.content, settings, true) && settings.useLast === true) return true;
+		if (item && settings.useLast && isAtBottom() && isInView(item.content, settings, true)) return true;
 		return false;
 	};
 
