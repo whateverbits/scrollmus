@@ -1,5 +1,5 @@
 # Scrollmus
-A simple vanilla JS scrollspy script.
+A simple, framework-agnostic, scrollspy script. Fork of [gumshoe by cferdinandi](https://github.com/cferdinandi/gumshoe).
 
 ## Getting Started
 Compiled and production-ready code can be found in the `dist` directory. The `src` directory contains development code.
@@ -14,16 +14,16 @@ If you're including your own polyfills or don't want to enable this feature for 
 You can [download the files directly from GitLab](https://gitlab.com/whateverbits/scrollmus/-/archive/main/scrollmus-main.tar.gz).
 
 ```html
-<script src="path/to/scrollmus.polyfill.min.js"></script>
+<script src="scrollmus.min.js"></script>
 ```
 
 **CDN**
 
-You can also use the [jsDelivr CDN](https://www.jsdelivr.com/package/npm/scrollmus). I recommend linking to a specific version number or version range to prevent major updates from breaking your site. Scrollmus uses semantic versioning.
+You can also use the [jsDelivr CDN](https://www.jsdelivr.com/package/npm/scrollmus). It is recommended to use a specific version number or version range to prevent major updates from breaking your site. Scrollmus uses semantic versioning.
 
 ```html
 <!-- Always get the latest version -->
-<!-- Not recommended for production sites! -->
+<!-- Not recommended for production sites -->
 <script src="https://www.jsdelivr.com/package/npm/scrollmus/dist/scrollmus.polyfill.min.js"></script>
 
 <!-- Get minor updates and patch fixes within a major version -->
@@ -33,7 +33,7 @@ You can also use the [jsDelivr CDN](https://www.jsdelivr.com/package/npm/scrollm
 <script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0/dist/scrollmus.polyfill.min.js"></script>
 
 <!-- Get a specific version -->
-<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0.0/dist/scrollmus.polyfill.min.js"></script>
+<script src="https://www.jsdelivr.com/package/npm/scrollmus@1.0.1/dist/scrollmus.polyfill.min.js"></script>
 ```
 
 **NPM**
@@ -142,7 +142,7 @@ Scrollmus includes smart defaults and works right out of the box. But if you wan
 ### Options and Settings
 You can pass options into Scrollmus when instantiating.
 
-```javascript
+```js
 var spy = new Scrollmus('#my-awesome-nav a', {
 
 	// Active classes
@@ -195,9 +195,7 @@ Scrollmus also exposes several public methods.
 #### setup()
 Setups all of the calculations Scrollmus needs behind-the-scenes. If you dynamically add navigation items to the DOM after Scrollmus is instantiated, you can run this method to update the calculations.
 
-**Example**
-
-```javascript
+```js
 var spy = new Scrollmus('#my-awesome-nav a');
 spy.setup();
 ```
@@ -205,19 +203,15 @@ spy.setup();
 #### detect()
 Activate the navigation link that's content is currently in the viewport.
 
-**Example**
-
-```javascript
+```js
 var spy = new Scrollmus('#my-awesome-nav a');
 spy.detect();
 ```
 
 #### destroy()
-Destroy the current instantiation of Scrollmus.
+Destroy the current instance of Scrollmus.
 
-**Example**
-
-```javascript
+```js
 var spy = new Scrollmus('#my-awesome-nav a');
 spy.destroy();
 ```
@@ -225,7 +219,7 @@ spy.destroy();
 ### Use Last Item
 By default, when the user scrolls to the bottom of the page the last item will be marked active. To prevent this behavior, set `useLast` to false when you call Scrollmus. When `useLast` is false, the item at the top of the page will continue to be marked active.
 
-```javascript
+```js
 var spy = new Scrollmus('#my-awesome-nav a', {
 	useLast: false
 });
