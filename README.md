@@ -1,5 +1,5 @@
 # Scrollmus
-A simple, framework-agnostic, scrollspy script. Fork of [gumshoe by cferdinandi](https://github.com/cferdinandi/gumshoe). The lastest compiled release can be found in the `dist` directory.
+A simple, framework-agnostic, scrollspy script. Fork of [Gumshoe by cferdinandi](https://github.com/cferdinandi/gumshoe). The lastest compiled release can be found in the `dist` directory.
 
 ## Browser Support
 There are two versions of Scrollmus: standalone and polyfill.
@@ -248,6 +248,9 @@ var spy = new Scrollmus('#my-awesome-nav a', {
 	useLast: false
 });
 ```
+
+## Issues
+Open new issues in the [GitLab Issue Tracker](https://gitlab.com/whateverbits/scrollmus/-/issues).
 
 ## License
 Scrollmus is distributed under the [MIT License](https://gitlab.com/whateverbits/scrollmus/-/blob/main/LICENSE).

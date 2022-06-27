@@ -1,5 +1,5 @@
 # Bug Report
-/label ~"type::bug"
+/label ~bug
 
 ## Overview
 <!---
